@@ -9,17 +9,19 @@
 	<body ng-app="myApp"> 
 
 		<!-- The view is the div element and everything inside it. The div element contains the ng-controller attribute
-		that specifies a controller (a JS function) named HelloController -->
-		<div ng-controller="HelloController">
+		that specifies a controller (a JS function) named myController -->
+		<div ng-controller="myController">
+
+		Name: <input type = "text" ng-model="name"/><br/>
 
 		<!-- Within this h1 element there is an "angular expression," which is specified using {{ }}. The expression
-		tells Angular to insert the model value named message into the HTML at that location. -->
-			<h1>{{message}}</h1>
+		tells Angular to insert the model value named "name" into the HTML at that location. -->
+			<h1>Message: Hello, {{name}}</h1>
 
 		</div>
 
 		<script>
-		// The HomeController function is simply a normal JS function. In Angular, it is registered using 
+		// The myController function is simply a normal JS function. In Angular, it is registered using 
 		// angular.module(...).controller(...)
 		// The below code creates an angular module named "myApp" and assigns it to a variable "app". Notice that
 		// the name "myApp" matches the name specified in the ng-app attribute. The empty brackets tell Angular to create 
@@ -28,11 +30,11 @@
 
 
 		// Using the "app" variable, the controller is then registered to the "myApp" module using the code below. 
-		app.controller("HelloController", function($scope) {
+		app.controller("myController", function($scope) {
 
 			// Finally, a member variable named "message" on the object $scope is set to "Hello World." 
-			// Placing this variable on scope ensures that Angualr will be able to use it in the Angular expression.
-			$scope.message = "Hello World";
+			// Placing this variable on scope ensures that Angular will be able to use it in the Angular expression.
+			// $scope.message = "Hello World";
 		});
 		</script>
 	</body>
