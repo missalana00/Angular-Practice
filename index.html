@@ -1,0 +1,51 @@
+<!DOCTYPE html>	
+<html>
+	<head>
+		<title>Hello World</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	</head>
+
+	<!-- ng-app attribute added to body tag indicates what part of the HTML page contains the AngularJS application -->
+	<body ng-app="myApp"> 
+
+		<!-- The view is the div element and everything inside it. The div element contains the ng-controller attribute
+		that specifies a controller (a JS function) named HelloController -->
+		<div ng-controller="HelloController">
+
+		<!-- Within this h1 element there is an "angular expression," which is specified using {{ }}. The expression
+		tells Angular to insert the model value named message into the HTML at that location. -->
+			<h1>{{message}}</h1>
+
+		</div>
+
+		<script>
+		// The HomeController function is simply a normal JS function. In Angular, it is registered using 
+		// angular.module(...).controller(...)
+		// The below code creates an angular module named "myApp" and assigns it to a variable "app". Notice that
+		// the name "myApp" matches the name specified in the ng-app attribute. The empty brackets tell Angular to create 
+		// the module and register it.
+		var app = angular.module("myApp", []);
+
+
+		// Using the "app" variable, the controller is then registered to the "myApp" module using the code below. 
+		app.controller("HelloController", function($scope) {
+
+			// Finally, a member variable named "message" on the object $scope is set to "Hello World." 
+			// Placing this variable on scope ensures that Angualr will be able to use it in the Angular expression.
+			$scope.message = "Hello World";
+		});
+		</script>
+	</body>
+</html>
+
+<!-- Once run in the browser, you should see "Hello World". Here is an explanation of what is happening when the 
+application is run in the browser:
+1. The HTML document is loaded and evaluated. 
+2. The AngularJS JavaScript file is loaded and executed, creating the Angular global object.
+3. The JavaScript that creates the "myApp" module and registers the "HomeController" controller function is executed.
+4. Angular scans the HTML looking for Angular apps and views. If Angular finds a view, it connects that view to the 
+specified controller function
+5. Angular executes the controller functions and updates the views with data from the model populated by the controller.
+At this point, the HTML page is ready to be displayed.
+6. Angular now listens for browser events (mouse movement, button clicks, keyboard entry, etc) and if any of the
+events would require a view to change, Angular updates the view accordingly.-->
